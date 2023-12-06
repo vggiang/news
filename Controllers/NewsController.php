@@ -22,4 +22,8 @@ class NewsController {
         $model->updateNews($id, $title, $content);
     }
 
+    public function deleteNews($id) {
+        $model = new NewsModel();
+        $model->deleteNews($id);
+    }
 }

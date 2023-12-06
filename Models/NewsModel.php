@@ -53,4 +53,14 @@ class NewsModel {
         $conn->close();
     }
 
+    public function deleteNews($id) {
+        $conn = $this->db->getConnection();
+
+        $id = (int)$id;
+
+        $query = "DELETE FROM news WHERE id=$id";
+        $conn->query($query);
+
+        $conn->close();
+    }
 }
