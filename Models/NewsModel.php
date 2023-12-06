@@ -28,4 +28,29 @@ class NewsModel {
         return $news;
     }
 
+    public function addNews($title, $content) {
+        $conn = $this->db->getConnection();
+
+        $title = $conn->real_escape_string($title);
+        $content = $conn->real_escape_string($content);
+
+        $query = "INSERT INTO news (title, content) VALUES ('$title', '$content')";
+        $conn->query($query);
+
+        $conn->close();
+    }
+
+    public function updateNews($id, $title, $content) {
+        $conn = $this->db->getConnection();
+
+        $id = (int)$id;
+        $title = $conn->real_escape_string($title);
+        $content = $conn->real_escape_string($content);
+
+        $query = "UPDATE news SET title='$title', content='$content' WHERE id=$id";
+        $conn->query($query);
+
+        $conn->close();
+    }
+
 }

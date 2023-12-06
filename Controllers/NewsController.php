@@ -12,4 +12,14 @@ class NewsController {
         $view->render($news);
     }
 
+    public function addNews($title, $content) {
+        $model = new NewsModel();
+        $model->addNews($title, $content);
+    }
+
+    public function updateNews($id, $title, $content) {
+        $model = new NewsModel();
+        $model->updateNews($id, $title, $content);
+    }
+
 }
