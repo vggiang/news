@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(getCookie('user_id')) {
                 document.querySelector('.nav__login').classList.add('d-none')
                 document.querySelector('.nav__name').classList.remove('d-none')
+                document.querySelector('.nav__logout').classList.remove('d-none')
                 fetch('../backend/index.php?controller=user&action=findUser&id='+getCookie('user_id'))
                 .then(response=>response.json())
                 .then(name=>{
@@ -34,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch('../backend/index.php?controller=category')
                     .then(response => response.json())
                     .then(data => {
+                        data = data.filter(item=>{
+                            return item.status == '1'
+                        })
                         var a1 = document.querySelector('.nav__category1 a').cloneNode(true)
                         document.querySelector('.nav__category1 a').remove()
                         data.forEach(item => {

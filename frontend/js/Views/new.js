@@ -1,4 +1,25 @@
 function defaultFunc() {
+    function getCookie(cookieName) {
+        var name = cookieName + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var cookieArray = decodedCookie.split(';');
+
+        for (var i = 0; i < cookieArray.length; i++) {
+            var cookie = cookieArray[i];
+            while (cookie.charAt(0) == ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(name) == 0) {
+                return cookie.substring(name.length, cookie.length);
+            }
+        }
+
+        return "";
+    }
+    if (getCookie('user_id')) {
+        document.querySelector('.div__cmt form').classList.remove('d-none')
+        document.querySelector('.div__cmt .d-flex').remove()
+    }
     var id = new URLSearchParams(window.location.search).get('id')
     fetch('../backend/index.php?controller=new&action=incViews&id=' + id)
     document.querySelector('#form__cmt').action = '../backend/index.php?controller=comment&action=addComment&new_id=' + id
@@ -9,6 +30,10 @@ function defaultFunc() {
         fetch('../backend/index.php?controller=new')
             .then(response => response.json())
             .then(data => {
+                data = data.filter(item=>{
+                    return item.status == '1'
+                })
+
                 data = data.sort((a, b) => {
                     return b.views - a.views
                 }).slice(0, 5)
@@ -33,10 +58,11 @@ function defaultFunc() {
         fetch('../backend/index.php?controller=new&action=findNew&id=' + id)
             .then(response => response.json())
             .then(data => {
+                if(data.status == '0') window.location.href='news.html'
                 document.querySelector('.new__category').textContent = data.category
                 document.querySelector('.new__date').textContent = data.date
                 document.querySelector('.new__title').textContent = data.title
-                document.querySelector('.new__content').textContent = data.content
+                document.querySelector('.new__content').innerHTML = data.content
                 document.querySelector('.new__author').textContent = data.author
                 document.querySelector('.new__views').textContent = data.views
                 document.querySelector('.new__img').src = data.img
@@ -50,14 +76,17 @@ function defaultFunc() {
         fetch('../backend/index.php?controller=comment&action=getinNew&id=' + id)
             .then(response => response.json())
             .then(data => {
-                document.querySelectorAll('.cmt__quantity').forEach(item=>{
+                data = data.filter(item=>{
+                    return item.status == '1'
+                })
+                document.querySelectorAll('.cmt__quantity').forEach(item => {
                     item.textContent = data.length
                 })
-                data.forEach(item=>{
-                    var divCmt = divtoCmt .cloneNode(true)
-                    divCmt.querySelector('h6 a').textContent=item.user
-                    divCmt.querySelector('i').textContent=item.date
-                    divCmt.querySelector('p').textContent=item.content
+                data.forEach(item => {
+                    var divCmt = divtoCmt.cloneNode(true)
+                    divCmt.querySelector('h6 a').textContent = item.user
+                    divCmt.querySelector('i').textContent = item.date
+                    divCmt.querySelector('p').textContent = item.content
                     document.querySelector('.cmt__list').appendChild(divCmt)
                 })
             })
