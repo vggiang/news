@@ -1,9 +1,9 @@
 /**
 * Template Name: BigNews
 * Updated: Nov 17 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* Template URL: https://Nhóm 6.com/nice-admin-bootstrap-admin-html-template/
+* Author: Nhóm 6.com
+* License: https://Nhóm 6.com/license/
 */
 (function() {
   "use strict";
@@ -119,11 +119,11 @@
   /**
    * Initiate quill editors
    */
-  if (select('.quill-editor-default')) {
-    new Quill('.quill-editor-default', {
-      theme: 'snow'
-    });
-  }
+  // if (select('.quill-editor-default')) {
+  //   new Quill('.quill-editor-default', {
+  //     theme: 'snow'
+  //   });
+  // }
 
   if (select('.quill-editor-bubble')) {
     new Quill('.quill-editor-bubble', {
@@ -299,26 +299,26 @@
   /**
    * Initiate Datatables
    */
-  const datatables = select('.datatable', true)
-  datatables.forEach(datatable => {
-    new simpleDatatables.DataTable(datatable, {
-      perPageSelect: [5, 10, 15, ["All", -1]],
-      columns: [{
-          select: 2,
-          sortSequence: ["desc", "asc"]
-        },
-        {
-          select: 3,
-          sortSequence: ["desc"]
-        },
-        {
-          select: 4,
-          cellClass: "green",
-          headerClass: "red"
-        }
-      ]
-    });
-  })
+  // const datatables = select('.datatable', true)
+  // datatables.forEach(datatable => {
+  //   new simpleDatatables.DataTable(datatable, {
+  //     perPageSelect: [5, 10, 15, ["All", -1]],
+  //     columns: [{
+  //         select: 2,
+  //         sortSequence: ["desc", "asc"]
+  //       },
+  //       {
+  //         select: 3,
+  //         sortSequence: ["desc"]
+  //       },
+  //       {
+  //         select: 4,
+  //         cellClass: "green",
+  //         headerClass: "red"
+  //       }
+  //     ]
+  //   });
+  // })
 
   /**
    * Autoresize echart charts

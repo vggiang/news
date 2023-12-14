@@ -6,6 +6,9 @@ function defaultFunc() {
         fetch('../../backend/index.php?controller=comment')
             .then(response => response.json())
             .then(data => {
+                data = data.filter(item=>{
+                    return item.status == '1'
+                })
                 data.forEach(item => {
                     var divNew = divtoNew.cloneNode(true)
                     var td = divNew.querySelectorAll('td')
@@ -13,7 +16,12 @@ function defaultFunc() {
                     td[1].textContent = item.user
                     td[2].textContent = item.content
                     td[3].textContent = item.date
+                    td[4].querySelector('a').href = '../../backend/index.php?controller=comment&action=delCmt&id='+item.id
                     document.querySelector('.comment__list').appendChild(divNew)
+                });
+
+                new simpleDatatables.DataTable(document.querySelector('.datatabless'), {
+                    perPageSelect: [5, 10, 15, ["All", -1]],
                 });
             })
     }

@@ -1,246 +1,129 @@
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
 <html lang="vi">
 
 <head>
-    <meta charset="utf-8">
-    <title>Đăng nhập</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Đăng nhập</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: BigNews
+  * Updated: Nov 17 2023 with Bootstrap v5.3.2
+  * Template URL: https://Nhóm 6.com/nice-admin-bootstrap-admin-html-template/
+  * Author: Nhóm 6.com
+  * License: https://Nhóm 6.com/license/
+  ======================================================== -->
 </head>
 
 <body>
-    <div class="wrapper" id="form__in">
-        <div class="title">
-            Đăng nhập
-        </div>
-        <form action="../backend/index.php?controller=user&action=login" method="post">
-            <span style="color: red;" class="loginF d-none">Sai tài khoản mật khẩu!</span>
-            <span style="color: rgb(0, 141, 0);" class="signupT d-none">Đăng ký thành công!</span>
-            <div class="field">
-                <input type="text" name="user" required>
-                <label>Tên đăng nhập</label>
-            </div>
-            <div class="field">
-                <input type="password" name="pass" required>
-                <label>Mật khẩu</label>
-            </div>
-            <div class="field">
-                <input type="submit" value="Đăng nhập">
-            </div>
-            <div class="signup-link">
-                Bạn chưa có tài khoản? <a style="cursor: pointer;" onclick="document.querySelector('#form__up').classList.remove('d-none'); 
-                document.querySelector('#form__in').classList.add('d-none')">Đăng ký!</a>
-            </div>
-        </form>
-    </div>
 
-    <div class="wrapper d-none" id="form__up">
-        <div class="title">
-            Đăng ký
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">BigNews</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <span class="text-danger loginF d-none">Sai tài khoản mật khẩu!</span>
+                    <h5 class="card-title text-center pb-0 fs-4">Đăng nhập trang quản trị</h5>
+                  </div>
+
+                  <form class="row g-3 needs-validation" novalidate
+                    action="../../backend/index.php?controller=author&action=login" method="post">
+                    <div class="col-12">
+                      <label for="user" class="form-label">Tên đăng nhập</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" name="user" class="form-control" id="user" required>
+                        <div class="invalid-feedback">Vui lòng nhập tên đăng nhập.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="pass" class="form-label">Mật khẩu</label>
+                      <input type="password" name="pass" class="form-control" id="pass" required>
+                      <div class="invalid-feedback">Vui lòng nhập mật khẩu!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">Đăng nhập</button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+              <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://Nhóm 6.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://Nhóm 6.com/nice-admin-bootstrap-admin-html-template/ -->
+                Thiết kế bởi <a href="#">Nhóm 6</a>
+              </div>
+
+            </div>
+          </div>
         </div>
-        <form action="../backend/index.php?controller=user&action=addUser" method="post">
-            <span style="color: red;" class="signupF d-none">Tên đăng nhập đã tồn tại!</span>
-            <div class="field">
-                <input type="text" name="name" required>
-                <label>Họ và Tên</label>
-            </div>
-            <div class="field">
-                <input type="text" name="user" required>
-                <label>Tên đăng nhập</label>
-            </div>
-            <div class="field">
-                <input type="text" name="email" required>
-                <label>Email</label>
-            </div>
-            <div class="field">
-                <input type="password" name="pass" required>
-                <label>Mật khẩu</label>
-            </div>
-            <div class="field">
-                <input type="submit" value="Đăng ký">
-            </div>
-            <div class="signup-link">
-                Bạn đã có tài khoản? <a style="cursor: pointer;" onclick="document.querySelector('#form__in').classList.remove('d-none'); 
-                document.querySelector('#form__up').classList.add('d-none')">Đăng nhập!</a>
-            </div>
-        </form>
+
+      </section>
+
     </div>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/Views/login.js"></script>
 </body>
 
 </html>
-
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Afacad:400,500,600,700&display=swap');
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Afacad', sans-serif;
-    }
-
-    html,
-    body {
-        display: grid;
-        height: 100%;
-        width: 100%;
-        place-items: center;
-        background: #f2f2f2;
-        /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
-    }
-
-    ::selection {
-        background: #4158d0;
-        color: #fff;
-    }
-
-    .wrapper {
-        width: 380px;
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .wrapper .title {
-        font-size: 35px;
-        font-weight: 600;
-        text-align: center;
-        line-height: 100px;
-        color: #fff;
-        user-select: none;
-        border-radius: 15px 15px 0 0;
-        background: linear-gradient(-135deg, #c850c0, #4158d0);
-    }
-
-    .wrapper form {
-        padding: 10px 30px 50px 30px;
-    }
-
-    .wrapper form .field {
-        height: 50px;
-        width: 100%;
-        margin-top: 20px;
-        position: relative;
-    }
-
-    .wrapper form .field input {
-        height: 100%;
-        width: 100%;
-        outline: none;
-        font-size: 17px;
-        padding-left: 20px;
-        border: 1px solid lightgrey;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-    }
-
-    .wrapper form .field input:focus,
-    form .field input:valid {
-        border-color: #4158d0;
-    }
-
-    .wrapper form .field label {
-        position: absolute;
-        top: 50%;
-        left: 20px;
-        color: #999999;
-        font-weight: 400;
-        font-size: 17px;
-        pointer-events: none;
-        transform: translateY(-50%);
-        transition: all 0.3s ease;
-    }
-
-    form .field input:focus~label,
-    form .field input:valid~label {
-        top: 0%;
-        font-size: 16px;
-        color: #4158d0;
-        background: #fff;
-        transform: translateY(-50%);
-    }
-
-    form .content {
-        display: flex;
-        width: 100%;
-        height: 50px;
-        font-size: 16px;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    form .content .checkbox {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    form .content input {
-        width: 15px;
-        height: 15px;
-        background: red;
-    }
-
-    form .content label {
-        color: #262626;
-        user-select: none;
-        padding-left: 5px;
-    }
-
-    form .content .pass-link {
-        color: "";
-    }
-
-    form .field input[type="submit"] {
-        color: #fff;
-        border: none;
-        padding-left: 0;
-        margin-top: -10px;
-        font-size: 20px;
-        font-weight: 500;
-        cursor: pointer;
-        background: linear-gradient(-135deg, #c850c0, #4158d0);
-        transition: all 0.3s ease;
-    }
-
-    form .field input[type="submit"]:active {
-        transform: scale(0.95);
-    }
-
-    form .signup-link {
-        color: #262626;
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    form .pass-link a,
-    form .signup-link a {
-        color: #4158d0;
-        text-decoration: none;
-    }
-
-    form .pass-link a:hover,
-    form .signup-link a:hover {
-        text-decoration: underline;
-    }
-</style>
-
-<script>
-    var loginF = new URLSearchParams(window.location.search).get('loginF')
-    var signupT = new URLSearchParams(window.location.search).get('signupT')
-    var signupF = new URLSearchParams(window.location.search).get('signupF')
-
-    if (signupF) {
-        document.querySelector('.signupF').classList.remove('d-none')
-        document.querySelector('#form__up input[name="name"]').value = signupF
-        document.querySelector('#form__in').classList.add('d-none')
-        document.querySelector('#form__up').classList.remove('d-none')
-    } else if (signupT) {
-        document.querySelector('.signupT').classList.remove('d-none')
-        document.querySelector('#form__in input[name="user"]').value = signupT
-    } else if (loginF) {
-        document.querySelector('.loginF').classList.remove('d-none')
-        document.querySelector('#form__in input[name="user"]').value = loginF
-    }
-</script>
