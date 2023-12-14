@@ -45,7 +45,8 @@ class AuthorModel extends BaseModel
     // Kiểm tra username tồn tại hay chưa
     public function checkuser_name($user)
     {
-        $sql = "SELECT `user` FROM `users` WHERE user = '$user'";
+        $table = self::TABLE;
+        $sql = "SELECT `user` FROM `$table` WHERE user = '$user'";
         $check = mysqli_fetch_assoc($this->_query($sql));
         return (isset($check) ? False : True);
     }
@@ -62,7 +63,7 @@ class AuthorModel extends BaseModel
         if(!isset($user)) return False;
         if(!$this->checkPassword($pass, $user['pass'])) return False;
         
-        setcookie("user_id", $user['id'], time() + 3600, "/");
+        setcookie("author_id", $user['id'], time() + 3600, "/");
         return True;
     }
 }

@@ -19,17 +19,17 @@ class AuthorController extends BaseController
         echo json_encode($author);
     }
 
-    public function findUser()
+    public function findAuthor()
     {
         $id = $_GET['id'];
-        $user = $this->authorModel->findId($id);
+        $author = $this->authorModel->findId($id);
 
         // Trả về dữ liệu dưới dạng JSON
         header('Content-Type: application/json');
-        echo json_encode($user);
+        echo json_encode($author);
     }
 
-    public function addUser()
+    public function addAuthor()
     {
         $data = [
             'email'  => $_POST['email'],
@@ -40,9 +40,9 @@ class AuthorController extends BaseController
 
         if ($this->authorModel->checkuser_name($data['user'])) {
             $this->authorModel->store($data);
-            header("Location: ../frontend/login.html?signupT=" . $data['user']);
+            header("Location: ../frontend/admin/author.html");
         } else {
-            header("Location: ../frontend/login.html?signupF=" . $data['name']);
+            header("Location: ../frontend/admin/author.html?signupF=" . $data['user']);
         }
     }
 
@@ -58,14 +58,14 @@ class AuthorController extends BaseController
         header("Location: ../frontend/dashboard.html?tab=mgr__user");
     }
 
-    public function delUser()
+    public function delAuthor()
     {
         $id = $_GET['id'];
         $data = [
             'status' => '0'
         ];
         $this->authorModel->edit($id, $data);
-        header("Location: ../frontend/dashboard.html?tab=mgr__user");
+        header("Location: ../frontend/admin/author.html");
     }
 
     public function login()
@@ -77,16 +77,16 @@ class AuthorController extends BaseController
 
         $check = $this->authorModel->isValidUser($data);
         if ($check) {
-            header("Location: ../frontend/index.html");
+            header("Location: ../frontend/admin/index.html");
         } else {
-            header("Location: ../frontend/login.html?loginF=" . $data['user']);
+            header("Location: ../frontend/admin/login.html?loginF=" . $data['user']);
         }
     }
 
     public function logout()
     {
-        setcookie("user_id", "", time() - 3600, "/");
-        header("Location: ../frontend/index.html");
+        setcookie("author_id", "", time() - 3600, "/");
+        header("Location: ../frontend/admin/login.html");
     }
 
 }
