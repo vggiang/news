@@ -34,44 +34,37 @@ class NewController extends BaseController
         $this->newModel->Views($id);
     }
 
-    public function addRoom()
+    public function addNew()
     {
-        $data = [
-            'name'      => $_POST['name'],
-            'location'  => $_POST['location'],
-            'img'       => $_POST['img'],
-            'capacity'  => $_POST['capacity'],
-            'utility'   => $_POST['utility']
-        ];
-
-        $this->newModel->store($data);
-        header("Location: ../frontend/dashboard.html?tab=mgr__room");
+        $json_data = file_get_contents("php://input");
+        $data = json_decode($json_data, true);
+        $data['author_id'] = $_COOKIE['author_id'];
+        if($this->newModel->store($data)){
+            header('Content-Type: application/json');
+            echo json_encode(True);
+        }
     }
 
-    public function editRoom()
+    public function editNew()
     {
         $id = $_GET['id'];
-        $data = [
-            'name'      => $_POST['name'],
-            'location'  => $_POST['location'],
-            'img'       => $_POST['img'],
-            'capacity'  => $_POST['capacity'],
-            'utility'   => $_POST['utility']
-        ];
 
-        $this->newModel->edit($id, $data);
-
-        header("Location: ../frontend/dashboard.html?tab=mgr__room");
+        $json_data = file_get_contents("php://input");
+        $data = json_decode($json_data, true);
+        if( $this->newModel->edit($id, $data)){
+            header('Content-Type: application/json');
+            echo json_encode(True);
+        }
     }
 
-    public function delRoom()
+    public function delNew()
     {
         $id = $_GET['id'];
         $data = [
             'status' => '0'
         ];
         $this->newModel->edit($id, $data);
-        header("Location: ../frontend/dashboard.html?tab=mgr__room");
+        header("Location: ../frontend/admin/index.html");
     }
 
 
