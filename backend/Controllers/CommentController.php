@@ -56,5 +56,14 @@ class CommentController extends BaseController
         header("Location: ../frontend/dashboard.html?tab=mgr__room");
     }
 
+    public function delCmt()
+    {
+        $id = $_GET['id'];
+        $data = [
+            'status' => '0'
+        ];
+        $this->commentModel->edit($id, $data);
+        header("Location: ../frontend/admin/comment.html");
+    }
 
 }

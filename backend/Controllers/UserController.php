@@ -46,18 +46,6 @@ class UserController extends BaseController
         }
     }
 
-    public function editUser()
-    {
-        $id = $_GET['id'];
-        $data = [
-            'email'  => $_POST['email'],
-            'name'  => $_POST['name']
-        ];
-
-        $this->userModel->edit($id, $data);
-        header("Location: ../frontend/dashboard.html?tab=mgr__user");
-    }
-
     public function delUser()
     {
         $id = $_GET['id'];
@@ -65,7 +53,7 @@ class UserController extends BaseController
             'status' => '0'
         ];
         $this->userModel->edit($id, $data);
-        header("Location: ../frontend/dashboard.html?tab=mgr__user");
+        header("Location: ../frontend/admin/user.html");
     }
 
     public function login()
